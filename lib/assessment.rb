@@ -68,53 +68,53 @@ end
 # blackjack?(5, 4) #=> false
 def blackjack?(card_one, card_two)
   sum = 0
+  sum1 = 0
+  sum2 = 0
   if card_one == "j" || card_one == "q" || card_one == "k"
     sum += 10
   end
-  if card_two == "j" || card_one == "q" || card_one == "k"
-    sum += 10
-  end
 
-  test = Integer(card_one) rescue false
+    test = Integer(card_one) rescue false
   if test == card_one.to_i
     sum += card_one.to_i
   end
 
-  test2 = Integer(card_two) rescue false
-  if test2 == card_two.to_i
-    sum += card_two.to_i
+  if card_two == "j" || card_one == "q" || card_one == "k"
+    sum += 10
   end
 
-  if card_one == 'a'
-    sum1 = sum + 1
-    sum2 = sum + 11
-  end
 
-  if sum2 > 21
-    sum = sum1
-  else
-    sum = sum2
-  end
+   test2 = Integer(card_two) rescue false
+   if test2 == card_two.to_i
+     sum += card_two.to_i
+   end
 
-  if card_two == 'a'
-    sum1 = sum + 1
-    sum2 = sum + 11
-  end
 
-  if sum2 > 21
-    sum = sum1
-  else
-    sum = sum2
-  end
 
-  if card_one == 'a' && card_two == 'a'
-    sum = 12
-  end
+   if sum2 > 21
+     sum = sum1
+   else
+     sum = sum2
+   end
 
-  if sum == 21
-    return 'true'
-  else
-    return false
-  end
+   if card_two == 'a'
+     sum1 = sum + 1
+     sum2 = sum + 11
+      if sum2 > 21
+        sum = sum1
+      else
+        sum = sum2
+      end
+   end
 
-end
+   if card_one == 'a' && card_two == 'a'
+     sum = 12
+   end
+
+   if sum == 21
+     return 'true'
+   else
+     return false
+   end
+ end
+puts(blackjack?(10, 'a'))
